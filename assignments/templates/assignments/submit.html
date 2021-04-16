@@ -1,0 +1,50 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+
+<br><br>
+<div class="container" >
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded">
+
+        <hr>
+        {% if n %}
+        <form method="POST" action="{% url 'main:submit' ass_id %} " enctype="multipart/form-data">
+            <div class="row justify-content-center">
+                {% csrf_token %}
+                {% for i in range %}
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Image {{forloop.counter}}</label>
+                    <input type="file" required name="img{{i}}" class="form-control" id="inputGroupFile01">
+                </div>
+                {% endfor %}
+                <input type="hidden" required name="n" value="{{n}}">
+                
+                <input type="submit" class="btn btn-success w-50">
+                    
+            </div>
+        </form> 
+        {% else %}
+
+        <form method="GET" action="{% url 'main:submit' ass_id %} ">
+            <div class="row justify-content-center">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Number of images in your assignment</span>
+                    <input type="number" name="n" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <input type="submit" class="btn btn-success w-50">
+                    
+            </div>
+        </form> 
+        
+        {% endif %}
+
+
+    </div>
+
+    
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+
+<br><br>
+<div class="container" >
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded">
+        {% if assignments %}
+            {% for task in assignments reversed %}
+                {% if not task.done %}
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <form id="form{{task.id}}" action="{% url 'main:delete' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-check">
+                                    <input class="form-check-input c{{task.id}}" name="rmtask" onclick="event_add('{{task.id}}')" type="checkbox" value="{{task.id}}" id="flexCheckDefault">
+                                    <p1  style="float: left;" id="task{{task.id}}">{{task.assignment.title}}</p1> 
+                                    <a href="{% url 'main:assignment' task.id %}"><button style="float:right;" type="button" class="btn btn-primary">view assignment</button></a>
+                                    <a href="{% url 'main:solution' task.id %}"><button style="float:right;margin-right: 2px;" type="button" class="btn btn-primary">view Solutions</button></a>
+                                    
+                                </div>
+                            </form>  
+                                
+                        </div>
+                    </div>
+                    
+                {% endif %}
+            {% endfor %} 
+            <hr>
+            <div class="row " style="display: none;" id="removebtn" >
+                <div id="success-alert">
+                  <div class="alert alert-success " role="alert">
+                    Are you sure you have completed the assignment?
+                    <button type="button" class="btn btn-success" id="remove"  aria-label="Close">YESS</button>
+                    <button type="button" class="btn-close"  onclick="remove_alert('#removebtn')" aria-label="Close"></button>
+                    
+                  </div>
+            </div>
+            
+        {% endif %}
+        <div id="empty" style="display: none;" class="row">
+            <div class="col">
+
+                <div class="form-check task">
+                <form>
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Woohooo !! You have no assignment right now!
+                        </label>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
+<div style="text-align: center;">
+    <a href="{% url 'main:completed' %}"><button style="border: 1px transparent;border-radius: 15px;"  type="button" class="btn link-button btn-success">Completed Tasks</button></a>
+</div>
+<script>
+    a= document.getElementsByClassName('form-check');
+    if(a.length==1){
+        
+        document.getElementById("empty").style.display="block";
+    }
+    
+</script>
+
+{% endblock %}

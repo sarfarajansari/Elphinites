@@ -1,0 +1,18 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+<br><br>
+<div class="container ">
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded" >
+        <div class="row">
+            <hr>
+            <a href="{% url 'login' %} "><button style="border: 1px transparent;border-radius: 15px;"  class="btn w-75 btn-primary">Login</button></a>
+            <hr>
+            <a href="{% url 'main:register' %} "><button style="border: 1px transparent;border-radius: 15px;"  class="btn w-75 btn-primary">Register</button></a>
+            <hr>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+
+<br><br>
+<div class="container" >
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded">
+            {% for task in assignments %}
+                {% if task.submitted %}
+                    <hr>
+                    <div class="row">
+                        <div class="col form-check">
+                            <p1 style="float: left;"> {{task.sol_title}} </p1>
+                            <a href="{% url 'main:single_solution' task.id %}"><button style="float:right;" type="button" class="btn btn-primary">view solution</button></a>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %} 
+            <hr>
+            
+        <div id="empty" style="display: none;" class="row">
+            <div class="col">
+
+                <div class="form-check task">
+                <form>
+                        <label class="form-check-label" for="flexCheckDefault">
+                        No solution available right now! <br>
+                        </label>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+{% if not ss.submitted %}
+<div style="text-align: center;" class="text-white">
+    Would you like to submit yours to help your friends by submitting your solution??<br>
+    <a href="{% url 'main:submit' ss.id %}"><button type="button" class="btn btn-primary justify-content-center">submit your solution</button></a>
+</div>
+{% endif %}
+<script>
+    function delete_task(id){
+        var taskid="#task"+String(id)
+        var formid="#form"+String(id)
+        document.querySelector(taskid).className="text-decoration-line-through"
+        document.querySelector(formid).submit()
+    }
+    a= document.getElementsByClassName('form-check');
+    if(a.length==1){
+        
+        document.getElementById("empty").style.display="block";
+    }
+
+    
+</script>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+    
+
+
+    <div class="container ">
+        <div class="col-lg-6 bg-secondary  shadow p-3 mb-5  rounded" >
+            <h1>Register</h1>
+            
+
+            <form method="POST" action="{% url 'main:register' %}">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                <p>There's something wrong with what you entered!</p>
+                {% endif %}
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                    <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    <input type="email" name="email" autocapitalize="none" autocomplete="email" autofocus required id="id_email" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Roll No.</span>
+                    <input type="number" name="roll_no" autofocus required id="id_rollno" class="form-control">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    <input type="password" name="password1" autocapitalize="none" autocomplete="new-password" autofocus required id="id_password1" class="form-control" pb-role="password"><br>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>
+                    <input type="password" name="password2" autocapitalize="none" autocomplete="new-password" autofocus required id="id_password2" class="form-control" pb-role="password"><br>
+                </div>
+                
+                <ul style="text-align: left;">
+                    <h4>NOTE:</h4>
+                    <li>Username should be 150 characters or fewer. Letters, digits and @/./+/-/_  only.</li>
+                    <li>Your password can’t be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can’t be a commonly used password.</li>
+                    <li>Your password can’t be entirely numeric.</li>
+                </ul>
+                
+                <input class="btn btn-success w-75 btn-block" type="submit" value="Register">
+            </form>
+        </div>
+    </div> 
+    
+
+
+{% endblock %}

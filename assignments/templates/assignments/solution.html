@@ -1,0 +1,35 @@
+{% extends 'assignments/layout.html' %}
+
+{% block content %} 
+
+<br><br>
+<div class="container bg-light ">
+    <div class="col-lg-10 bg-light " >
+        <div class="row  shadow p-3 mb-5  rounded" style="text-align: left;">
+            <h1 style="text-align: center;">ASSIGNMENT</h1>
+            <h4>Title : <strong>{{assignment.assignment.title}}</strong></h4>
+            <br>
+            <h4>Subject : <strong>{{assignment.assignment.subject}}</strong></h4>
+            <br>
+            <h4>Posted on : <strong>{{date}}</strong></h4>
+            <br>
+            <h4><strong>Description:</strong> {{assignment.assignment.description}}</h4>
+        </div>
+
+
+        <div class="row  shadow p-3 mb-5  rounded" style="text-align: left;">
+            <h1 style="text-align: center;">SOLUTION BY {{assignment.student.user.username}}</h1>
+            {% for attachment in solutions %}
+                <img src="{{attachment.image.url}}" alt="attachment">
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<div style="text-align: center;">
+    <a href="{% url 'main:assignment' assignment.id %}"><button style="border: 1px transparent;border-radius: 15px;"  type="button" class="btn link-button btn-primary">View assignment</button></a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+.col-lg-6,.col-lg-8,.col-lg-10{
+    text-align: center;
+    margin: auto;
+}
+.content{
+    background-image: linear-gradient(to bottom right,#0000ff,#ffffff);
+}
+.add-task{
+    font-size: 22px;
+    text-align: center;
+}
+.task{
+    font-size: larger;
+}
+
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+}
+
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+    font-size: 3.5rem;
+}
+}
+
+p1{
+    text-decoration-color: rgb(56, 54, 54);
+}
+
+.btn-close{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 2;
+}
+
+#logout{
+    font-size: 50px;
+}
