@@ -1,2 +1,2 @@
 # elphinites
-This is a really productive app and can be used by a group of learners for studies and assignments
+Back in my junior college, this project was my attempt to make a group study application. This was kinda stupid, as we already have apps like Discord and it's nearly impossible to make something better than that with a cheap deployment plan. Moreover, back in the days, I used to build whatever I could think about automating... Despite this being a huge failure in terms of what it was supposed todo, it was a big step for me to get better at web development.
